@@ -18,11 +18,11 @@ import llm_sys.engine.llama
 
 import llm_sys.utils as utils
 
-
+# Change swap space to 2GB
 def init_engine(layer_ids, model_name, vram_usage=0.8):
     engine_args = EngineArgs(model=model_name, block_size=16,
                              load_format="dummy", enforce_eager=True,
-                             swap_space=32, max_num_batched_tokens=4096,
+                             swap_space=2, max_num_batched_tokens=4096,
                              gpu_memory_utilization=vram_usage)
 
     engine = PipelineStageEngine.from_engine_args(engine_args, layer_ids)

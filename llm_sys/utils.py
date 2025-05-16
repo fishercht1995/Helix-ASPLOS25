@@ -24,7 +24,7 @@ def warm_up():
     for i in range(100):
         x.cuda()
 
-
+"""
 def get_local_ip():
     # Attempt to connect to an internet host in order to determine the local interface
     try:
@@ -36,7 +36,15 @@ def get_local_ip():
         return ip
     except Exception as e:
         return f"Error obtaining local IP: {str(e)}"
-
+"""
+def get_local_ip():
+    # Read the IP address from the ~/worker_ip file
+    try:
+        with open(os.path.expanduser("~/worker_ip"), "r") as file:
+            ip = file.read().strip()
+        return ip
+    except Exception as e:
+        return f"Error obtaining local IP from ~/worker_ip: {str(e)}"
 
 class FlyingQuery:
     def __init__(self, query_uid, input_length, output_length, compute_node_uids, start_layers, end_layers, pipeline):
