@@ -536,7 +536,7 @@ void sender_thread(const std::string &worker_ip) {
     // initial the output sockets
     std::unordered_map<int, std::unique_ptr<PollServer>> output_sockets;
     for (const auto &id_ip: output_id_ip) {
-        // locally bind to the port 0.0.0.0
+        // locally bind to
         std::string bind_address = "tcp://" + "0.0.0.0" + ":" + std::to_string(BASE_PORT + id_ip.first);
         output_sockets[id_ip.first] = std::make_unique<PollServer>(context, bind_address);
     }
